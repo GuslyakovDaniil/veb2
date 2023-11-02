@@ -49,6 +49,7 @@ public class ModelsServiceImpl implements ModelsService<Integer> {
         modelsRepository.deleteById(models.getId());
     }
 
+
     @Override
     public void expelModels(Integer id) {
         modelsRepository.deleteById(id);

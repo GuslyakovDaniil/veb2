@@ -31,6 +31,7 @@ public class OfferServiceImpl implements OffersService<Integer> {
         this.modelsRepository = modelsRepository;
     }
 
+
     public OffersDto registerOffers(OffersDto offersDto) {
         Offers offer = modelMapper.map(offersDto, Offers.class);
         Users seller = usersRepository.findById(offersDto.getSeller_id())
