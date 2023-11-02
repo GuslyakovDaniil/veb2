@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<h1>Welcome to the Car Dealership!</h1>
+<h2>Latest Offers:</h2>
+<ul>
+    <li th:each="offer : ${offers}">
+        <p th:text="${offer.description}"></p>
+    </li>
+</ul>
+
+<h2>Popular Brands:</h2>
+<ul>
+    <li th:each="brand : ${brands}">
+        <p th:text="${brand.name}"></p>
+    </li>
+</ul>
+
+<h2>Featured Models:</h2>
+<ul>
+    <li th:each="model : ${models}">
+        <p th:text="${model.name}"></p>
+    </li>
+</ul>
+</body>
+</html>
