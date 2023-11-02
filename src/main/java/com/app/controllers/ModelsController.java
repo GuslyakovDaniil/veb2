@@ -41,4 +41,5 @@ public class ModelsController {
         modelsService.expelModels(id);
         return ResponseEntity.noContent().build();
     }
+
 }
