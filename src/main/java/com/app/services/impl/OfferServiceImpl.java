@@ -20,29 +20,29 @@ import java.util.stream.Collectors;
 public class OfferServiceImpl implements OffersService<Integer> {
     private final OffersRepository offersRepository;
     private final ModelMapper modelMapper;
-    @Autowired
-    private UsersRepository usersRepository;
-    @Autowired
-    private ModelsRepository modelsRepository;
+    private final UsersRepository usersRepository;
+    private final ModelsRepository modelsRepository;
 
     @Autowired
-    public OfferServiceImpl(OffersRepository offersRepository, ModelMapper modelMapper) {
+    public OfferServiceImpl(OffersRepository offersRepository, ModelMapper modelMapper, UsersRepository usersRepository, ModelsRepository modelsRepository) {
         this.offersRepository = offersRepository;
         this.modelMapper = modelMapper;
+        this.usersRepository = usersRepository;
+        this.modelsRepository = modelsRepository;
     }
 
-    @Override
     public OffersDto registerOffers(OffersDto offersDto) {
         Offers offer = modelMapper.map(offersDto, Offers.class);
         Users seller = usersRepository.findById(offersDto.getSeller_id())
-                .orElseThrow(() -> new IllegalArgumentException("Error"));
+                .orElseThrow(() -> new IllegalArgumentException("Seller not found with ID: " + offersDto.getSeller_id()));
         Models model = modelsRepository.findById(offersDto.getModel_id())
-                .orElseThrow(() -> new IllegalArgumentException("Error"));
+                .orElseThrow(() -> new IllegalArgumentException("Model not found with ID: " + offersDto.getModel_id()));
         offer.setSeller(seller);
         offer.setModel(model);
         Offers savedOffer = offersRepository.save(offer);
         return modelMapper.map(savedOffer, OffersDto.class);
     }
+
 
     @Override
     public void expelOffers(OffersDto offersDto) {

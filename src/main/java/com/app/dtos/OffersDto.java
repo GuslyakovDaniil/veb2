@@ -10,17 +10,20 @@ import java.util.Date;
 
 public class OffersDto {
     private int id;
-    private Date created;
     private String description;
     private Engine engine;
     private String imageUrl;
     private Integer mileage;
-    private Date modified;
     private BigDecimal price;
     private Transmission transmission;
     private Integer year;
     private int model_id;
     private int seller_id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date created;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date modified;
 
     public OffersDto(Date created, String description, Engine engine, String imageUrl, Integer mileage,
                      Date modified, BigDecimal price, Transmission transmission, Integer year, Integer model_id, Integer seller_id) {

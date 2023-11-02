@@ -7,8 +7,6 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 public class Users extends BaseEntity {
-    @Column(name = "created")
-    private Date created;
 
     @Column(name = "email")
     private String email;
@@ -34,14 +32,6 @@ public class Users extends BaseEntity {
 
     public void setRole(Roles role) {
         this.role = role;
-    }
-
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
     }
 
     public String getEmail() {
@@ -87,8 +77,22 @@ public class Users extends BaseEntity {
     protected Users() {
     }
 
-    protected Users(Date created, String email, String first_name, String last_name, String password) {
+    @PrePersist
+    public void prePersist() {
+        Date currentDate = new Date();
+        this.created = currentDate;
+        this.modified = currentDate;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.modified = new Date();
+    }
+
+
+    protected Users(Date created, Date modified, String email, String first_name, String last_name, String password) {
         this.created = created;
+        this.modified = modified;
         this.email = email;
         this.first_name = first_name;
         this.last_name = last_name;

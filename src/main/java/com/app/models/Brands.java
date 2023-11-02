@@ -11,13 +11,6 @@ public class Brands extends BaseEntity {
 
     @OneToMany(mappedBy = "brand")
     private Set<Models> model;
-
-    @Column(name = "created")
-    private Date created;
-
-    @Column(name = "modified")
-    private Date modified;
-
     @Column(name = "name")
     private String name;
 
@@ -40,22 +33,6 @@ public class Brands extends BaseEntity {
         this.model = model;
     }
 
-    public Date getCreated() {
-        return created;
-    }
-
-    public void setCreated(Date created) {
-        this.created = created;
-    }
-
-    public Date getModified() {
-        return modified;
-    }
-
-    public void setModified(Date modified) {
-        this.modified = modified;
-    }
-
     public String getName() {
         return name;
     }
@@ -63,7 +40,6 @@ public class Brands extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
-
 
     public Brands() {
     }

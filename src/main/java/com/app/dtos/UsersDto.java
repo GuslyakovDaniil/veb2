@@ -7,17 +7,20 @@ import java.util.Date;
 public class UsersDto {
     private int id;
     private Boolean is_active;
-    private Date created;
     private String first_name;
     private String image_url;
     private String last_name;
-    private Date modified;
     private String email;
     private String password;
     private String username;
     private Integer role_id;
     private OffersDto offers;
     private OffersDto seller_Id;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date created;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date modified;
 
     public String getEmail() {
         return email;
@@ -35,10 +38,6 @@ public class UsersDto {
 
     public void setIs_active(Boolean is_active) {this.is_active = is_active;}
 
-    public Date getCreated() {return created;}
-
-    public void setCreated(Date created) {this.created = created;}
-
     public String getFirst_name() {return first_name;}
 
     public void setFirst_name(String first_name) {this.first_name = first_name;}
@@ -50,10 +49,6 @@ public class UsersDto {
     public String getLast_name() {return last_name;}
 
     public void setLast_name(String last_name) {this.last_name = last_name;}
-
-    public Date getModified() {return modified;}
-
-    public void setModified(Date modified) {this.modified = modified;}
 
     public String getPassword() {return password;}
 

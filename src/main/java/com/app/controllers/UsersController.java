@@ -23,6 +23,7 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.CREATED).body(registeredUsers);
     }
 
+
     @GetMapping("/{id}")
     public ResponseEntity<UsersDto> getUsersById(@PathVariable Integer id) {
         return usersService.findUsers(id)

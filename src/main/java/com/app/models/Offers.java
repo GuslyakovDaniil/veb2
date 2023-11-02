@@ -18,8 +18,7 @@ public class Offers extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "model_Id")
     private Models model;
-    @Column(name = "created")
-    private Date created;
+
     @Column(name = "description")
     private String description;
     @Column(name = "engine")
@@ -28,8 +27,7 @@ public class Offers extends BaseEntity {
     private String imageUrl;
     @Column(name = "mileage")
     private Integer mileage;
-    @Column(name = "modified")
-    private Date modified;
+
     @Column(name = "price", precision = 19, scale = 2)
     private BigDecimal price;
     @Column(name = "transmission")
@@ -56,13 +54,7 @@ public class Offers extends BaseEntity {
         this.seller = seller;
     }
 
-    public Date getCreated() {
-        return created;
-    }
 
-    public void setCreated(Date created) {
-        this.created = created;
-    }
 
     public String getDescription() {
         return description;
@@ -94,14 +86,6 @@ public class Offers extends BaseEntity {
 
     public void setMileage(Integer mileage) {
         this.mileage = mileage;
-    }
-
-    public Date getModified() {
-        return modified;
-    }
-
-    public void setModified(Date modified) {
-        this.modified = modified;
     }
 
     public BigDecimal getPrice() {

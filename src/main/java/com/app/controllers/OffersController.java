@@ -1,11 +1,13 @@
 package com.app.controllers;
 
 import com.app.dtos.OffersDto;
+import com.app.models.Offers;
 import com.app.services.OffersService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,8 +21,15 @@ public class OffersController {
 
     @PostMapping("/register")
     public ResponseEntity<OffersDto> registerOffers(@RequestBody OffersDto offersDto) {
-        OffersDto registeredOffers = offersService.registerOffers(offersDto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(registeredOffers);
+        // Set the 'created' and 'modified' fields with the current date and time
+        Date currentDate = new Date();
+        offersDto.setCreated(currentDate);
+        offersDto.setModified(currentDate);
+
+        // Register the offer using the service
+        OffersDto registeredOffer = offersService.registerOffers(offersDto);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(registeredOffer);
     }
 
     @GetMapping("/{id}")
@@ -31,7 +40,7 @@ public class OffersController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<OffersDto>> getAllOffers() {
+    public ResponseEntity<List<OffersDto> >getAllOffers() {
         List<OffersDto> allOffers = offersService.getAll();
         return ResponseEntity.ok(allOffers);
     }
