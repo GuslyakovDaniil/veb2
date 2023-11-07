@@ -42,4 +42,16 @@ public class BaseEntity {
     public void setId(int id) {
         this.id = id;
     }
+
+    @PrePersist
+    public void prePersist() {
+        Date currentDate = new Date();
+        this.created = currentDate;
+        this.modified = currentDate;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        this.modified = new Date();
+    }
 }

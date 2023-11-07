@@ -7,7 +7,6 @@ import org.hibernate.annotations.Cascade;
 
 import java.math.BigDecimal;
 import java.util.Date;
-
 @Entity
 @Table(name = "offers")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -110,18 +109,6 @@ public class Offers extends BaseEntity {
 
     public void setYear(Integer year) {
         this.year = year;
-    }
-
-    @PrePersist
-    public void prePersist() {
-        Date currentDate = new Date();
-        this.created = currentDate;
-        this.modified = currentDate;
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.modified = new Date();
     }
 
 }

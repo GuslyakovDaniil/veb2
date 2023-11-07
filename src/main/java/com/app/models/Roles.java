@@ -28,9 +28,4 @@ public class Roles extends BaseEntity {
         this.user = user;
     }
 
-
-
-    protected Roles() {
-    }
-
 }

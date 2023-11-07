@@ -73,29 +73,4 @@ public class Users extends BaseEntity {
     public void setOffers(Set<Offers> offers) {
         this.offers = offers;
     }
-
-    protected Users() {
-    }
-
-    @PrePersist
-    public void prePersist() {
-        Date currentDate = new Date();
-        this.created = currentDate;
-        this.modified = currentDate;
-    }
-
-    @PreUpdate
-    public void preUpdate() {
-        this.modified = new Date();
-    }
-
-
-    protected Users(Date created, Date modified, String email, String first_name, String last_name, String password) {
-        this.created = created;
-        this.modified = modified;
-        this.email = email;
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.password = password;
-    }
 }

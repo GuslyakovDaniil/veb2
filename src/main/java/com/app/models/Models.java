@@ -116,15 +116,4 @@ public class Models extends BaseEntity {
         this.start_year = start_year;
     }
 
-
-    protected Models(Category category, Date created, Integer end_year, String image_url, Date modified,
-                     String name, Integer start_year,int brand_id) {
-        this.category = category;
-        this.created = created;
-        this.end_year = end_year;
-        this.image_url = image_url;
-        this.modified = modified;
-        this.name = name;
-        this.start_year = start_year;
-    }
 }

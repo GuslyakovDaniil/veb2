@@ -1,9 +1,7 @@
 package com.app.controllers;
 
 import com.app.dtos.BrandsDto;
-import com.app.models.Brands;
 import com.app.services.BrandsServices;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,19 +19,14 @@ public class BrandsController {
 
     @PostMapping("/register")
     public ResponseEntity<String> registerBrand(@RequestBody BrandsDto brandDto) {
-        // Set the 'created' and 'modified' fields with the current date and time
         Date currentDate = new Date();
         brandDto.setCreated(currentDate);
         brandDto.setModified(currentDate);
 
-        // Save the brand using the service
         BrandsDto savedBrand = brandsService.registerBrands(brandDto);
 
-        // Return a response with the ID of the saved brand
         return ResponseEntity.ok("Brand registered with ID: " + savedBrand.getId());
     }
-
-
 
     @GetMapping("/{id}")
     public ResponseEntity<BrandsDto> getBrandsById(@PathVariable Integer id) {

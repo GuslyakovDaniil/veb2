@@ -44,9 +44,4 @@ public class Brands extends BaseEntity {
     public Brands() {
     }
 
-    protected Brands(Date created, Date modified, String name) {
-        this.created = created;
-        this.modified = modified;
-        this.name = name;
-    }
 }
