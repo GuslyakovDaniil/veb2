@@ -21,12 +21,10 @@ public class OffersController {
 
     @PostMapping("/register")
     public ResponseEntity<OffersDto> registerOffers(@RequestBody OffersDto offersDto) {
-        // Set the 'created' and 'modified' fields with the current date and time
         Date currentDate = new Date();
         offersDto.setCreated(currentDate);
         offersDto.setModified(currentDate);
 
-        // Register the offer using the service
         OffersDto registeredOffer = offersService.registerOffers(offersDto);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(registeredOffer);

@@ -1,12 +1,15 @@
 package com.app.controllers;
 
+import org.springframework.ui.Model;
 import com.app.dtos.BrandsDto;
 import com.app.services.BrandsServices;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/brands")
@@ -34,11 +37,21 @@ public class BrandsController {
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
-
-    @GetMapping("/home")
-    public String home() {
-        return "home-view";
+    @GetMapping("/getBrand")
+    public ModelAndView getDogHomePage(ModelAndView modelAndView){
+        modelAndView.setViewName("view/home-view");
+        return modelAndView;
     }
+
+    @GetMapping("/getBrand/{id}")
+    public ModelAndView getDogHomePage(@PathVariable("id") int id, Model model, ModelAndView modelAndView){
+        Optional<BrandsDto> brands = brandsService.findBrands(id);
+        model.addAttribute("brands", brands);
+        modelAndView.setViewName("view/home-view");
+        return modelAndView;
+    }
+
+
 
     @GetMapping("/all")
     public ResponseEntity<List<BrandsDto>> getAllBrands() {
